@@ -1,0 +1,19 @@
+{
+  "name": "optim",
+  "version": "1.0.0",
+  "description": "Project for Udacity FEND",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alfio Parisi",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.0.4",
+    "gulp-image-resize": "^0.12.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.1.2",
+    "gulp-webp": "^2.3.0"
+  }
+}
