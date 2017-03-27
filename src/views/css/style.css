@@ -32,6 +32,7 @@ form {
 .mover {
   position: fixed;
   width: 256px;
+  transform: translateZ(0);  /*create a new layer for the pizzas in the background */
   z-index: -1;
 }
 

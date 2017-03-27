@@ -67,3 +67,21 @@ because of a read/write cycle.
 * calculate the scrolled height outside of the for loop and store it into `bodyScrollTop`
 * lower the number of pizzas in the background from 200 to 50, since we can't see
 more than 50 pizzas on screen.
+* used `transform: translateZ(0);` within the `.mover` class, to be sure the pizzas
+in the background are drawn on their own layer (avoids repaint on scrolling)
+
+#### on resizing issues
+
+* The for loop inside `changePizzaSizes` function is creating a _forced synchronous layout_
+* the line `var oldWidth = elem.offsetWidth;` within the `determineDx()` function
+is also causing a _forced synchronous layout_
+
+##### improvements
+
+* access the DOM only once and store the element within `rndPizzaContainer`
+* every pizza container has the same size of the others, so calculate it only once
+outside the loop
+
+##### issues
+
+* `determineDx()` is still causing a _forced synchronous layout_
