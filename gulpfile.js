@@ -5,27 +5,34 @@ var gulp = require("gulp"),
     webp = require("gulp-webp"),
     uglify = require("gulp-uglify"),
     cleanCSS = require("gulp-clean-css"),
+    concat = require("gulp-concat"),
     critical = require("critical").stream;
 
-//TODO: fix landing folders and concatenation
 //minify .css
 gulp.task("minify-css", function() {
-  return gulp.src('css/*.css')
+  return gulp.src('docs/css/style.css')
     .pipe(cleanCSS({compatibility: 'ie8'}))
-    .pipe(rename("main.min.css"))
-    .pipe(gulp.dest('./min-css'));
+    .pipe(rename("style.min.css"))
+    .pipe(gulp.dest('dist/css'));
 });
 
 //minify .js
 gulp.task('compress', function () {
   // returns a Node.js stream, but no handling of error messages
-  return gulp.src('js/*.js')
+  return gulp.src('docs/js/*.js')
     .pipe(uglify())
-    .pipe(rename("main.min.js"))
-    .pipe(gulp.dest('./min-js'));
+    .pipe(rename("perfmatters.min.js"))
+    .pipe(gulp.dest('dist/js'));
 });
 
-//working properly!
+// Generate & Inline Critical-path CSS
+gulp.task('critical', function () {
+    return gulp.src('dist/*.html')
+        .pipe(critical({base: 'dist/', inline: true, css: ['dist/css/style.css']}))
+        .pipe(gulp.dest('dist/css'));
+});
+
+//resize images
 var resizeTasks = [];
 
 [200, 500, 1000, 1500].forEach(function(el) {
