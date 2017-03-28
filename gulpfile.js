@@ -28,8 +28,8 @@ gulp.task('compress', function () {
 // Generate & Inline Critical-path CSS
 gulp.task('critical', function () {
     return gulp.src('dist/*.html')
-        .pipe(critical({base: 'dist/', inline: true, css: ['dist/css/style.css']}))
-        .pipe(gulp.dest('dist/css'));
+        .pipe(critical({base: 'dist/', inline: true, css: ['dist/css/style.min.css']}))
+        .pipe(gulp.dest('dist/'));
 });
 
 //resize images
