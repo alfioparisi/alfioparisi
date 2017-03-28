@@ -65,6 +65,8 @@ pick the right one based on the window size
 #### critical CSS / JS
 
 * add the `async` attribute to the JS scripts (since they weren't modifying the page)
+* minify both CSS and JS
+* inline the critical CSS using gulp
 
 ### Part 2 : optimize fps
 
