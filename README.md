@@ -98,3 +98,21 @@ outside the loop
 ##### issues
 
 * `determineDx()` is still causing a _forced synchronous layout_
+
+### Gulp setup
+
+To use gulp you will need [nodejs](https://docs.npmjs.com/getting-started/installing-node).
+Once you have that install gulp globally : `npm install --global gulp-cli`
+Then enter the project directory and init both npm and gulp: `npm init` ; `npm install --save-dev gulp`
+Create a _gulpfile.js_ in which you will define gulp tasks
+To run gulp simply type the name of the task in the command line
+[gulp](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)
+
+The plugins used for this project are :
+* [gulp-rename](https://www.npmjs.com/package/gulp-rename)
+* [gulp-image-resize](https://www.npmjs.com/package/gulp-rename)
+* [gulp-imagemin](https://www.npmjs.com/package/gulp-imagemin)
+* [gulp-uglify](https://www.npmjs.com/package/gulp-uglify)
+* [gulp-clean-css](https://github.com/scniro/gulp-clean-css)
+* [gulp-webp](https://www.npmjs.com/package/gulp-webp)
+* [critical](https://github.com/addyosmani/critical)
