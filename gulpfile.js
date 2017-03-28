@@ -1,9 +1,11 @@
 var gulp = require("gulp"),
     rename = require("gulp-rename"),
     imageResize = require("gulp-image-resize"),
+    imagemin = require("gulp-imagemin"),
     webp = require("gulp-webp"),
     uglify = require("gulp-uglify"),
-    cleanCSS = require("gulp-clean-css");
+    cleanCSS = require("gulp-clean-css"),
+    critical = require("critical").stream;
 
 //TODO: fix landing folders and concatenation
 //minify .css
@@ -26,10 +28,10 @@ gulp.task('compress', function () {
 //working properly!
 var resizeTasks = [];
 
-[500, 1000, 1500].forEach(function(el) {
+[200, 500, 1000, 1500].forEach(function(el) {
   var resize = "to " + el;
   gulp.task(resize, function() {
-    return gulp.src("src/img/*.{png, jpg}") //TODO: test this line
+    return gulp.src("docs/img/*.jpg")
       .pipe(imageResize({
         width: el,
         height: el,
@@ -41,13 +43,13 @@ var resizeTasks = [];
           } else {
             return 0.5;
           }
-        })(),
-        format: "jpg"
+        })()
     }))
       .pipe(rename(function (path) { path.basename += "_" + el; }))
-      .pipe(gulp.dest("dist/img-responsive"))
-      .pipe(webp()) //another plugin
-      .pipe(gulp.dest("dist/img-responsive"));
+      .pipe(imagemin()) //compress
+      .pipe(gulp.dest("docs/img-resp"))
+      .pipe(webp()) //change format to webp
+      .pipe(gulp.dest("docs/img-resp"));
   })
   resizeTasks.push(resize);
 });

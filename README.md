@@ -55,6 +55,17 @@ The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstra
 * <a href="http://getbootstrap.com/components/">Bootstrap's Components</a>
 
 <!-- project start -->
+### Part 1 : optimize CRP
+
+#### image resizing
+
+* use gulp plugins to resize and compress the images, and the picture element to
+pick the right one based on the window size
+
+#### critical CSS / JS
+
+* add the `async` attribute to the JS scripts (since they weren't modifying the page)
+
 ### Part 2 : optimize fps
 
 #### on page scrolling issues
